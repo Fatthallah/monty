@@ -1,27 +1,34 @@
 #include "monty.h"
 
-/**
- * itba3_harf - Prints the Ascii value.
- * @stack: Pointer to a pointer pointing to top node of the stack.
- * @line_number: Interger representing the line number of of the opcode.
- */
-
-void itba3_harf(stack_t **stack, unsigned int line_number)
+void rotatel(stack_t **stack, __attribute__((unused))unsigned int ln)
 {
-	int ascii;
-	if (stack == NULL || *stack == NULL)
-		slslat_akhtaa(11, line_number);
-	ascii = (*stack)->n;
-	if (ascii < 0 || ascii > 127)
-		slslat_akhtaa(10, line_number);
-	printf("%c\n", ascii);
+        stack_t *tmp;
+        if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+                return;
+        tmp = *stack;
+        while (tmp->next != NULL)
+                tmp = tmp->next;
+        tmp->next = *stack;
+        tmp->prev->next = NULL;
+        tmp->prev = NULL;
+        (*stack)->prev = tmp;
+        (*stack) = tmp;
 }
 
-/**
- * itba3_str - Prints a string.
- * @stack: Pointer to a pointer pointing to top node of the stack.
- * @ln: Interger representing the line number of of the opcode.
- */
+void rotatef(stack_t **stack, __attribute__((unused))unsigned int ln)
+{
+        stack_t *tmp;
+        if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+                return;
+        tmp = *stack;
+        while (tmp->next != NULL)
+                tmp = tmp->next;
+        tmp->next = *stack;
+        (*stack)->prev = tmp;
+        *stack = (*stack)->next;
+        (*stack)->prev->next = NULL;
+        (*stack)->prev = NULL;
+}
 
 void itba3_str(stack_t **stack, __attribute__((unused))unsigned int ln)
 {
@@ -44,44 +51,13 @@ void itba3_str(stack_t **stack, __attribute__((unused))unsigned int ln)
 	printf("\n");
 }
 
-/**
- * rotatef - Rotates the first node of the stack to the bottom.
- * @stack: Pointer to a pointer pointing to top node of the stack.
- * @ln: Interger representing the line number of of the opcode.
- */
-
-void rotatef(stack_t **stack, __attribute__((unused))unsigned int ln)
+void itba3_harf(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp;
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		return;
-	tmp = *stack;
-	while (tmp->next != NULL)
-		tmp = tmp->next;
-	tmp->next = *stack;
-	(*stack)->prev = tmp;
-	*stack = (*stack)->next;
-	(*stack)->prev->next = NULL;
-	(*stack)->prev = NULL;
-}
-
-/**
- * rotatel - Rotates the last node of the stack to the top.
- * @stack: Pointer to a pointer pointing to top node of the stack.
- * @ln: Interger representing the line number of of the opcode.
- */
-
-void rotatel(stack_t **stack, __attribute__((unused))unsigned int ln)
-{
-	stack_t *tmp;
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		return;
-	tmp = *stack;
-	while (tmp->next != NULL)
-		tmp = tmp->next;
-	tmp->next = *stack;
-	tmp->prev->next = NULL;
-	tmp->prev = NULL;
-	(*stack)->prev = tmp;
-	(*stack) = tmp;
+        int ascii;
+        if (stack == NULL || *stack == NULL)
+                slslat_akhtaa(11, line_number);
+        ascii = (*stack)->n;
+        if (ascii < 0 || ascii > 127)
+                slslat_akhtaa(10, line_number);
+        printf("%c\n", ascii);
 }
