@@ -2,12 +2,12 @@
 #define MONTY_H
 
 #define _GNU_SOURCE
-#include <stdio.h>
-#include <unistd.h>
 #include <string.h>
-#include <stdlib.h>
+#include <stdio.h>
 #include <ctype.h>
 #include <stdarg.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
