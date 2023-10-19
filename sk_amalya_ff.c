@@ -35,14 +35,14 @@ void eftah_malaf(char *ism_malaf)
 
 /**
  * laky_dala - fun
- * @amlkod: amlkod
+ * @opcode: opcode
  * @kimaaa: jh
  * @sigha:  rd
  * @llnn: ew
  * Return: nothing
  */
  
-void laky_dala(char *amlkod, char *kimaaa, int llnn, int sigha)
+void laky_dala(char *opcode, char *kimaaa, int llnn, int sigha)
 {
 	int x, aalam;
 	instruction_t func_list[] = {
@@ -64,18 +64,18 @@ void laky_dala(char *amlkod, char *kimaaa, int llnn, int sigha)
 		{NULL, NULL}
 	};
 
-	if (amlkod[0] == '#')
+	if (opcode[0] == '#')
 		return;
-	for (aalam = 1, x = 0; func_list[x].amlkod != NULL; x++)
+	for (aalam = 1, x = 0; func_list[x].opcode != NULL; x++)
 	{
-		if (strcmp(amlkod, func_list[x].amlkod) == 0)
+		if (strcmp(opcode, func_list[x].opcode) == 0)
 		{
-			kalim_dala(func_list[x].f, amlkod, kimaaa, llnn, sigha);
+			kalim_dala(func_list[x].f, opcode, kimaaa, llnn, sigha);
 			aalam = 0;
 		}
 	}
 	if (aalam == 1)
-		khtaa(3, llnn, amlkod);
+		khtaa(3, llnn, opcode);
 }
 
 /**
@@ -126,19 +126,19 @@ void kalim_dala(op_func dalafdfd, char *oopp, char *qimafff, int llnn, int sigha
 
 int halil_khat(char *pofooo, int raqam_satr, int sigha)
 {
-	char *amlkod;
+	char *opcode;
 	char *kimaaa;
 	const char *f_dlm_f = "\n ";
 	if (pofooo == NULL)
 		khtaa(4);
-	amlkod = strtok(pofooo, f_dlm_f);
-	if (amlkod == NULL)
+	opcode = strtok(pofooo, f_dlm_f);
+	if (opcode == NULL)
 		return (sigha);
 	kimaaa = strtok(NULL, f_dlm_f);
-	if (strcmp(amlkod, "stack") == 0)
+	if (strcmp(opcode, "stack") == 0)
 		return (0);
-	if (strcmp(amlkod, "queue") == 0)
+	if (strcmp(opcode, "queue") == 0)
 		return (1);
-	laky_dala(amlkod, kimaaa, raqam_satr, sigha);
+	laky_dala(opcode, kimaaa, raqam_satr, sigha);
 	return (sigha);
 }

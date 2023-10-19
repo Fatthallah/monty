@@ -7,7 +7,7 @@ stack_t *head = NULL;
  * Return: pointer or null
  */
 
-stack_t *eaamal_noqta(int x)
+stack_t *eaamal_noqta(int n)
 {
 	stack_t *noqta;
 	noqta = malloc(sizeof(stack_t));
@@ -15,7 +15,7 @@ stack_t *eaamal_noqta(int x)
 		khtaa(4);
 	noqta->next = NULL;
 	noqta->prev = NULL;
-	noqta->x = x;
+	noqta->n = n;
 	return (noqta);
 }
 

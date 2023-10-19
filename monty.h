@@ -55,7 +55,7 @@ void eqraa_malaf(FILE *);
 int len_chars(FILE *);
 void laky_dala(char *, char *, int, int);
 void itba3_top(stack_t **, unsigned int);
-void dif_noqt(stack_t **, unsigned int);
+void la2(stack_t **, unsigned int);
 void khtaa(int kod_elakhtaa, ...);
 void khtaa_aktar(int kod_elakhtaa, ...);
 void slslat_akhtaa(int kod_elakhtaa, ...);
